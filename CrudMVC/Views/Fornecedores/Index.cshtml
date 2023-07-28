@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CrudMVC.Models.Fornecedor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fornecedores</h1>
+
+<p>
+    <a asp-action="NovoFornecedor" class="btn btn-success">Novo Fornecedor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco_Rua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco_Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco_Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco_UF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco_Rua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco_Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco_Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco_UF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                <a asp-action="AtualizarFornecedor" asp-route-fornecedorId="@item.FornecedorId" class="btn btn-primary">Atualizar</a>
+
+                <form asp-action="ExcluirFornecedor" asp-route-fornecedorId="@item.FornecedorId">
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
